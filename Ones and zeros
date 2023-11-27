@@ -2,14 +2,11 @@
 
 unsigned binary_array_to_numbers(const unsigned bits[/*count*/], size_t count)
 {
-  size_t a=1, b=0;
-  for(int i=count-1; i>=0; i--)
+  size_t a = 1, b = 0;
+  for(int i = count - 1; i >= 0; i--)
   {
-    if(bits[i])
-    {
-      b+=a;
-    }
-    a*=2;
+    b += a * bits[i];
+    a <<= 1;
   }
-	return b;
+  return b;
 }
