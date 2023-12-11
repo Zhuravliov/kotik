@@ -1,0 +1,41 @@
+unsigned decode_roman (const char *roman_number)
+{
+  int count = 0;
+  while(roman_number[count]!='\0')
+  {
+    count++;
+  }
+  int arr[count+1];
+  arr[count]=0;
+  for(int i=0; i<count; i++)
+  {
+    if(roman_number[i]=='I')
+      arr[i]=1;
+    if(roman_number[i]=='V')
+      arr[i]=5;
+    if(roman_number[i]=='X')
+      arr[i]=10;
+    if(roman_number[i]=='L')
+      arr[i]=50;
+    if(roman_number[i]=='C')
+      arr[i]=100;
+    if(roman_number[i]=='D')
+      arr[i]=500;
+    if(roman_number[i]=='M')
+      arr[i]=1000;
+  }
+  int result=0;
+  for(int i=0; i<count; i++)
+  {
+    if(arr[i]>=arr[i+1])
+    {
+      result+=arr[i];
+    }
+    else
+    {
+      result += arr[i+1]-arr[i];
+      i++;
+    }
+  }
+	return result;
+}
